@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-label="Cozy desk">
+  <rect x="56" y="82" width="248" height="24" rx="10" fill="#f6b26b"/>
+  <rect x="64" y="104" width="236" height="84" rx="12" fill="#ffe4b5"/>
+  <rect x="74" y="112" width="74" height="68" rx="10" fill="#ffd08e"/>
+  <rect x="156" y="112" width="74" height="68" rx="10" fill="#ffd08e"/>
+  <rect x="238" y="112" width="52" height="32" rx="8" fill="#9ad6ff"/>
+  <rect x="238" y="148" width="52" height="32" rx="8" fill="#9ad6ff"/>
+  <rect x="82" y="44" width="88" height="36" rx="10" fill="#a7e7ff"/>
+  <rect x="180" y="52" width="46" height="18" rx="9" fill="#ff9ab2"/>
+  <circle cx="246" cy="61" r="9" fill="#fff0a8"/>
+  <rect x="88" y="188" width="12" height="36" rx="6" fill="#c58b51"/>
+  <rect x="260" y="188" width="12" height="36" rx="6" fill="#c58b51"/>
+</svg>

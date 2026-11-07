@@ -1,0 +1,9 @@
+{
+  "name": "Calm Kids",
+  "short_name": "Calm Kids",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1fa7a7",
+  "icons": []
+}

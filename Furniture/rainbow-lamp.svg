@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" role="img" aria-label="Rainbow lamp">
+  <ellipse cx="130" cy="228" rx="62" ry="16" fill="#8ab6c9"/>
+  <rect x="118" y="116" width="24" height="98" rx="10" fill="#7aa0b3"/>
+  <path d="M70 136c0-44 26-76 60-76s60 32 60 76z" fill="#ffd36a"/>
+  <path d="M80 136c0-38 22-66 50-66s50 28 50 66z" fill="#ff8fa1"/>
+  <path d="M90 136c0-32 18-56 40-56s40 24 40 56z" fill="#8ee8ff"/>
+  <path d="M100 136c0-26 14-46 30-46s30 20 30 46z" fill="#a3efab"/>
+  <circle cx="130" cy="100" r="8" fill="#fff7d1"/>
+</svg>

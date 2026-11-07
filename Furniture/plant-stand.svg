@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" role="img" aria-label="Plant stand">
+  <ellipse cx="130" cy="240" rx="52" ry="12" fill="#9ec8a3"/>
+  <rect x="114" y="120" width="32" height="96" rx="12" fill="#8f6c4a"/>
+  <rect x="90" y="204" width="80" height="18" rx="9" fill="#7b5a3d"/>
+  <rect x="82" y="84" width="96" height="22" rx="10" fill="#7b5a3d"/>
+  <ellipse cx="130" cy="80" rx="44" ry="18" fill="#f2a46f"/>
+  <ellipse cx="130" cy="74" rx="38" ry="14" fill="#ffc28f"/>
+  <path d="M130 64c-10-16-2-36 14-46 8 16 4 34-14 46z" fill="#6bcf7a"/>
+  <path d="M128 64c-18-14-22-34-14-50 16 10 26 26 14 50z" fill="#88dc93"/>
+  <path d="M132 66c14-12 32-10 44 0-14 10-30 16-44 0z" fill="#56b86a"/>
+</svg>

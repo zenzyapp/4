@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-label="Cloud sofa">
+  <defs>
+    <linearGradient id="cloudBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fef7ff"/>
+      <stop offset="100%" stop-color="#d6f2ff"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ee8ff"/>
+      <stop offset="100%" stop-color="#68cde9"/>
+    </linearGradient>
+  </defs>
+  <rect x="46" y="108" width="268" height="84" rx="42" fill="url(#seat)"/>
+  <circle cx="92" cy="116" r="46" fill="url(#cloudBody)"/>
+  <circle cx="152" cy="94" r="52" fill="url(#cloudBody)"/>
+  <circle cx="212" cy="96" r="50" fill="url(#cloudBody)"/>
+  <circle cx="268" cy="116" r="42" fill="url(#cloudBody)"/>
+  <rect x="66" y="172" width="30" height="20" rx="8" fill="#4a9fbf"/>
+  <rect x="264" y="172" width="30" height="20" rx="8" fill="#4a9fbf"/>
+  <circle cx="112" cy="124" r="5" fill="#7fcce2"/>
+  <circle cx="182" cy="114" r="5" fill="#7fcce2"/>
+  <circle cx="242" cy="124" r="5" fill="#7fcce2"/>
+</svg>
