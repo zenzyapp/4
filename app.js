@@ -5921,7 +5921,12 @@ document.addEventListener("DOMContentLoaded", function(){
         if(!choicesWrap || !feedbackEl || !promptEl || !completeSocialActivity) return;
 
         const behaviors = shuffledCopy(getCurrentSocialBehaviorItems(step));
-        promptEl.textContent = currentSocialActivityPromptBase + (isExpectedStep ? ' Tap all of the expected behaviors.' : ' Tap all of the unexpected behaviors.');
+        const activityPrompt = isExpectedStep
+          ? currentSocialActivityPromptBase
+          : currentSocialActivityPromptBase.replace(/\bexpected\b/i, 'unexpected');
+        const selectionInstruction = 'Tap all the ' + targetType + ' behaviors.';
+        if(socialActivityPrompt) socialActivityPrompt.textContent = selectionInstruction;
+        promptEl.textContent = activityPrompt + ' ' + selectionInstruction;
         choicesWrap.innerHTML = '';
         feedbackEl.textContent = '';
         feedbackEl.style.color = '#1fa7a7';
