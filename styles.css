@@ -569,7 +569,11 @@ textarea{ min-height:140px; resize:vertical; }
   padding:2px 6px;
 }
 .treasure-wrap{ position:relative; width:140px; height:85px; margin:4px auto 20px; }
-.treasure-chest{ width:60px; height:auto; margin:0; cursor:pointer; position:absolute; left:50%; top:48%; transform:translate(-50%, -50%); }
+.treasure-chest{ width:60px; height:auto; margin:0; padding:0; border:0; background:transparent; cursor:pointer; position:absolute; left:50%; top:48%; transform:translate(-50%, -50%); }
+.treasure-chest img{ display:block; width:100%; height:auto; }
+.treasure-chest:disabled{ cursor:default; opacity:0.65; }
+.treasure-chest:focus-visible{ outline:3px solid #1fa7a7; outline-offset:3px; border-radius:8px; }
+.treasure-chest:disabled + .sparkles{ display:none; }
 .diamond-points{ position:absolute; left:50%; bottom:-25px; transform:translateX(-50%); font-size:var(--ui-font-size); font-weight:var(--ui-font-weight); color:#6b4f00; white-space:nowrap; }
 
 .coins-row{ display:flex; justify-content:center; gap:6px; margin-top:4px; font-size:var(--ui-font-size); font-weight:var(--ui-font-weight); opacity:0.9; color:#6b4f00; }

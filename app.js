@@ -3058,6 +3058,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         updateCoinGlow();
         if((completedIndex + 1) % 5 === 0){
+          recordDailyCheckIn();
           showDailyComplete();
           return;
         }
@@ -9688,6 +9689,78 @@ document.addEventListener("DOMContentLoaded", function(){
       // INFINITE SCROLL FOR DAYS - Generate more days when scrolling
       let nextDayNumber = 6;
       const daysContainer = document.getElementById('daysContainer');
+      const dailyCheckInStreakKey = 'dailyCheckInStreak';
+
+      function getLocalDayNumber() {
+        const now = new Date();
+        return Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
+      }
+
+      function getDailyCheckInStreak() {
+        const raw = localStorage.getItem(dailyCheckInStreakKey);
+        if (!raw) return { lastDay: null, count: 0, pendingRewards: 0 };
+        try {
+          const state = JSON.parse(raw);
+          if (state && Number.isInteger(state.lastDay) && Number.isInteger(state.count) &&
+              state.count >= 0 && state.count < 5 && Number.isInteger(state.pendingRewards) &&
+              state.pendingRewards >= 0) return state;
+        } catch (error) {
+          console.error('Unable to read daily check-in streak:', error);
+        }
+        console.error('Invalid daily check-in streak data.');
+        return null;
+      }
+
+      function updateTreasureChests(message) {
+        const state = getDailyCheckInStreak();
+        const today = getLocalDayNumber();
+        const count = state && state.lastDay !== null && today - state.lastDay <= 1 ? state.count : 0;
+        document.querySelectorAll('.day-treasure').forEach(function(chest) {
+          const button = chest.querySelector('.treasure-chest');
+          const status = chest.querySelector('.diamond-points');
+          const available = !!state && state.pendingRewards > 0;
+          button.disabled = !available;
+          button.classList.toggle('pulse', available);
+          button.setAttribute('aria-label', available ? 'Claim 1,000 ZP from treasure chest' : 'Treasure chest, reward not yet available');
+          status.textContent = message || (state
+            ? (available ? 'Tap to claim 1,000 ZP!' : count + '/5 consecutive days for 1,000 ZP')
+            : 'Unable to load check-in reward.');
+        });
+      }
+
+      function recordDailyCheckIn() {
+        const state = getDailyCheckInStreak();
+        if (!state) return;
+        const today = getLocalDayNumber();
+        const nextState = DailyCheckInStreak.record(state, today);
+        if (nextState === state) return;
+        localStorage.setItem(dailyCheckInStreakKey, JSON.stringify(nextState));
+        updateTreasureChests();
+      }
+
+      if (daysContainer) {
+        daysContainer.addEventListener('click', function(event) {
+          const button = event.target.closest('.treasure-chest');
+          if (!button || !daysContainer.contains(button)) return;
+          const state = getDailyCheckInStreak();
+          if (!state || state.pendingRewards < 1) {
+            updateTreasureChests();
+            return;
+          }
+          state.pendingRewards--;
+          localStorage.setItem(dailyCheckInStreakKey, JSON.stringify(state));
+          coins = parseInt(localStorage.getItem('coins') || '0', 10) || 0;
+          awardCoins(1000);
+          updateTreasureChests(state.pendingRewards ? 'Tap to claim another 1,000 ZP!' : '1,000 ZP claimed!');
+        });
+        updateTreasureChests();
+        document.addEventListener('visibilitychange', function() {
+          if (!document.hidden) updateTreasureChests();
+        });
+        window.addEventListener('storage', function(event) {
+          if (event.key === dailyCheckInStreakKey) updateTreasureChests();
+        });
+      }
       
       function generateDaySection(dayNum) {
         const daySection = document.createElement('div');
@@ -9712,9 +9785,11 @@ document.addEventListener("DOMContentLoaded", function(){
         treasureWrap.className = 'treasure-wrap day-treasure';
         treasureWrap.setAttribute('aria-hidden', 'false');
         treasureWrap.innerHTML = `
-          <img src="Images/Other%20image/Treasure%20chest.png" alt="Treasure Chest" class="treasure-chest pulse" />
+          <button type="button" class="treasure-chest" disabled aria-label="Treasure chest, reward not yet available">
+            <img src="Other%20image/Treasure%20chest.png" alt="" />
+          </button>
           <div class="sparkles"></div>
-          <div class="diamond-points">1000 ZP</div>
+          <div class="diamond-points" aria-live="polite"></div>
         `;
         return treasureWrap;
       }
@@ -9739,6 +9814,7 @@ document.addEventListener("DOMContentLoaded", function(){
           
           nextDayNumber++;
         }
+        updateTreasureChests();
       }
       
       // Listen for scroll to generate more days
@@ -10695,18 +10771,18 @@ document.addEventListener("DOMContentLoaded", function(){
         const toyIcons = {
           ball: { emoji: '⚽', className: 'ball', img: null },
           teddy: { emoji: '🧸', className: 'teddy', img: null },
-          bed: { emoji: '🛏️', className: 'bed', img: 'Images/Furniture/Camo%20bed.png' },
-          'princess-bed': { emoji: '👑', className: 'princess-bed', img: 'Images/Furniture/Princess%20Bed.png' },
-          'yellow-bed': { emoji: '🌼', className: 'yellow-bed', img: 'Images/Furniture/Yellow%20Bed.png' },
-          'cloud-sofa': { emoji: '☁️', className: 'cloud-sofa', img: 'Images/Furniture/cloud-sofa.svg' },
-          'star-bookshelf': { emoji: '⭐', className: 'star-bookshelf', img: 'Images/Furniture/star-bookshelf.svg' },
-          'rainbow-lamp': { emoji: '🌈', className: 'rainbow-lamp', img: 'Images/Furniture/rainbow-lamp.svg' },
-          'cozy-desk': { emoji: '🪑', className: 'cozy-desk', img: 'Images/Furniture/cozy-desk.svg' },
-          'plant-stand': { emoji: '🪴', className: 'plant-stand', img: 'Images/Furniture/plant-stand.svg' },
-          computer: { emoji: '💻', className: 'computer', img: 'Images/Toys/PC.png' },
-          pc: { emoji: '💻', className: 'pc', img: 'Images/Toys/PC.png' },
-          books: { emoji: '📚', className: 'books', img: 'Images/Toys/books.png' },
-          'art-supplies': { emoji: '🎨', className: 'art-supplies', img: 'Images/Toys/Art%20supplies.png' }
+          bed: { emoji: '🛏️', className: 'bed', img: 'Furniture/Camo%20bed.png' },
+          'princess-bed': { emoji: '👑', className: 'princess-bed', img: 'Furniture/Princess%20Bed.png' },
+          'yellow-bed': { emoji: '🌼', className: 'yellow-bed', img: 'Furniture/Yellow%20Bed.png' },
+          'cloud-sofa': { emoji: '☁️', className: 'cloud-sofa', img: 'Furniture/cloud-sofa.svg' },
+          'star-bookshelf': { emoji: '⭐', className: 'star-bookshelf', img: 'Furniture/star-bookshelf.svg' },
+          'rainbow-lamp': { emoji: '🌈', className: 'rainbow-lamp', img: 'Furniture/rainbow-lamp.svg' },
+          'cozy-desk': { emoji: '🪑', className: 'cozy-desk', img: 'Furniture/cozy-desk.svg' },
+          'plant-stand': { emoji: '🪴', className: 'plant-stand', img: 'Furniture/plant-stand.svg' },
+          computer: { emoji: '💻', className: 'computer', img: 'Toys/PC.png' },
+          pc: { emoji: '💻', className: 'pc', img: 'Toys/PC.png' },
+          books: { emoji: '📚', className: 'books', img: 'Toys/books.png' },
+          'art-supplies': { emoji: '🎨', className: 'art-supplies', img: 'Toys/Art%20supplies.png' }
         };
 
         function getDefaultToyPosition(toyName, duplicateIndex) {
