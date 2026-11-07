@@ -1913,7 +1913,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerFoodFeeding(){
         if(!foodFeedingModal) return;
         feedingMsg.textContent = '';
-        setCareModalZenzyImage(foodModalZenzyImage, getZenzyEvolvedStateImage('eating', 'Images/Zenzy%20baby/Eating%20zenzy.png'), 'Zenzy eating');
+        setCareModalZenzyImage(foodModalZenzyImage, getZenzyEvolvedStateImage('eating', 'New%20zenzy.png'), 'Zenzy eating');
         showModal(foodFeedingModal);
         playChompingSound();
         
@@ -1927,7 +1927,7 @@ document.addEventListener("DOMContentLoaded", function(){
           if(evolvedSet && evolvedSet['eating']){
             zenzyAvatar.src = evolvedSet['eating'];
           } else {
-            zenzyAvatar.src = 'Images/Zenzy%20baby/Eating%20zenzy.png';
+            zenzyAvatar.src = 'New%20zenzy.png';
           }
         }
         
@@ -1943,7 +1943,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerDrinking(){
         if(!drinkingModal) return;
         drinkingMsg.textContent = '';
-        setCareModalZenzyImage(drinkingModalZenzyImage, getZenzyEvolvedStateImage('drinking', 'Images/Zenzy%20baby/Zenzy%20drink.png'), 'Zenzy drinking');
+        setCareModalZenzyImage(drinkingModalZenzyImage, getZenzyEvolvedStateImage('drinking', 'New%20zenzy.png'), 'Zenzy drinking');
         showModal(drinkingModal);
         playSlurpingSound();
         
@@ -1957,7 +1957,7 @@ document.addEventListener("DOMContentLoaded", function(){
           if(evolvedSet && evolvedSet['drinking']){
             zenzyAvatar.src = evolvedSet['drinking'];
           } else {
-            zenzyAvatar.src = 'Images/Zenzy%20baby/Zenzy%20drink.png';
+            zenzyAvatar.src = 'New%20zenzy.png';
           }
         }
         
@@ -1973,7 +1973,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerPlaying(){
         if(!playingModal) return;
         playingMsg.textContent = '';
-        setCareModalZenzyImage(playingModalZenzyImage, getZenzyEvolvedStateImage('playing', 'Images/Zenzy%20baby/zenzy%20playing.png'), 'Zenzy playing');
+        setCareModalZenzyImage(playingModalZenzyImage, getZenzyEvolvedStateImage('playing', 'New%20zenzy.png'), 'Zenzy playing');
         showModal(playingModal);
         playLaughingSound();
         
@@ -1985,7 +1985,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         // Show playing Zenzy image
         if(zenzyAvatar){
-          zenzyAvatar.src = getZenzyEvolvedStateImage('playing', 'Images/Zenzy%20baby/zenzy%20playing.png');
+          zenzyAvatar.src = getZenzyEvolvedStateImage('playing', 'New%20zenzy.png');
         }
         
         setTimeout(()=>{
@@ -2000,7 +2000,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerArt(){
         if(!artModal) return;
         artMsg.textContent = '';
-        setCareModalZenzyImage(artModalZenzyImage, getZenzyEvolvedStateImage('art', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Zenzy%20art.png')), 'Zenzy doing art');
+        setCareModalZenzyImage(artModalZenzyImage, getZenzyEvolvedStateImage('art', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png')), 'Zenzy doing art');
         showModal(artModal);
         
         // Update health stats
@@ -2010,7 +2010,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         // Show art Zenzy image
         if(zenzyAvatar){
-          zenzyAvatar.src = getZenzyEvolvedStateImage('art', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Zenzy%20art.png'));
+          zenzyAvatar.src = getZenzyEvolvedStateImage('art', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png'));
         }
         
         setTimeout(()=>{
@@ -2025,7 +2025,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerReading(){
         if(!readingModal) return;
         readingMsg.textContent = '';
-        setCareModalZenzyImage(readingModalZenzyImage, getZenzyEvolvedStateImage('reading', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Reading%20Zenzi.png')), 'Zenzy reading');
+        setCareModalZenzyImage(readingModalZenzyImage, getZenzyEvolvedStateImage('reading', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png')), 'Zenzy reading');
         showModal(readingModal);
         
         // Update health stats
@@ -2035,7 +2035,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         // Show reading Zenzy image
         if(zenzyAvatar){
-          zenzyAvatar.src = getZenzyEvolvedStateImage('reading', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Reading%20Zenzi.png'));
+          zenzyAvatar.src = getZenzyEvolvedStateImage('reading', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png'));
         }
         
         setTimeout(()=>{
@@ -2050,7 +2050,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function triggerPC(){
         if(!pcModal) return;
         pcMsg.textContent = '';
-        setCareModalZenzyImage(pcModalZenzyImage, getZenzyEvolvedStateImage('pc', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Zenzy%20PC.png')), 'Zenzy playing on the PC');
+        setCareModalZenzyImage(pcModalZenzyImage, getZenzyEvolvedStateImage('pc', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png')), 'Zenzy playing on the PC');
         showModal(pcModal);
         
         // Update health stats
@@ -2061,7 +2061,7 @@ document.addEventListener("DOMContentLoaded", function(){
         
         // Show PC Zenzy image
         if(zenzyAvatar){
-          zenzyAvatar.src = getZenzyEvolvedStateImage('pc', getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Zenzy%20PC.png'));
+          zenzyAvatar.src = getZenzyEvolvedStateImage('pc', getZenzyEvolvedStateImage('normal', 'New%20zenzy.png'));
         }
         
         setTimeout(()=>{
@@ -2103,13 +2103,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
         setTimeout(function(){
           if(zenzyHatchingImageModal){
-            zenzyHatchingImageModal.src = 'Images/Zenzy%20baby/Hatching%20Zenzy.png';
+            zenzyHatchingImageModal.src = 'New%20zenzy.png';
           }
         }, 2500);
 
         setTimeout(function(){
           if(zenzyHatchingImageModal){
-            zenzyHatchingImageModal.src = 'Images/Zenzy%20baby/Normal%20Zenzy.png';
+            zenzyHatchingImageModal.src = 'New%20zenzy.png';
           }
         }, 3800);
 
@@ -2122,7 +2122,7 @@ document.addEventListener("DOMContentLoaded", function(){
           localStorage.setItem('zenzyMood', 'normal');
           localStorage.setItem('zenzyEmotionId', 'normal');
           if(zenzyAvatar){
-            zenzyAvatar.src = 'Images/Zenzy%20baby/Normal%20Zenzy.png';
+            zenzyAvatar.src = 'New%20zenzy.png';
             zenzyAvatar.alt = 'Normal Zenzy';
             zenzyAvatar.style.left = '50%';
             zenzyAvatar.style.bottom = '0px';
@@ -2150,7 +2150,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if (existingBaby) existingBaby.remove();
         const babyImg = document.createElement('img');
         babyImg.id = 'zenzyBabyGift';
-        babyImg.src = 'Images/Zenzy%20baby/Normal%20Zenzy.png';
+        babyImg.src = 'New%20zenzy.png';
         babyImg.alt = 'Baby Zenzy';
         babyImg.style.position = 'absolute';
         babyImg.style.width = '95px';
@@ -10244,35 +10244,29 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       }
 
+      const newZenzyImage = 'New%20zenzy.png';
+
       const zenzyEmotions = [
         {
           id: 'normal',
-          img: 'Images/Zenzy%20baby/Normal%20Zenzy.png',
+          img: newZenzyImage,
           lines: ['I feel calm today.', 'I feel okay right now.', 'I feel steady and safe.']
         },
         {
           id: 'angry',
-          img: 'Images/Zenzy%20baby/Angry%20Zenzy.png',
+          img: newZenzyImage,
           lines: ['I feel angry right now.', 'I feel frustrated.', 'I need a calm moment.']
         },
         {
           id: 'sad',
-          img: 'Images/Zenzy%20baby/Sad%20zenzy.png',
+          img: newZenzyImage,
           lines: ['I feel sad today.', 'I feel a bit down.', 'I need a hug.']
         },
         {
           id: 'tired',
-          img: 'Images/Zenzy%20baby/Tired%20zenzy.png',
+          img: newZenzyImage,
           lines: ['I feel tired.', 'I need some rest.', 'My energy is low today.']
         }
-      ];
-
-      const evolveImages = [
-        'Images/Brown%20Evolve.png',
-        'Images/Green%20evolve.png',
-        'Images/Yellow%20evolve.png',
-        'Images/Raindbow%20evolve.png',
-        'Images/Red%20evolve.png'
       ];
 
       const eggHuntBackgrounds = [
@@ -10292,7 +10286,13 @@ document.addEventListener("DOMContentLoaded", function(){
         if (!raw) return null;
         try {
           const data = JSON.parse(raw);
-          return data && typeof data === 'object' ? data : null;
+          if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+          Object.keys(data).forEach(function(state) {
+            if (typeof data[state] === 'string') {
+              data[state] = newZenzyImage;
+            }
+          });
+          return data;
         } catch (e) {
           return null;
         }
@@ -10344,35 +10344,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
       function createRandomEvolvedSet() {
         if (archiveEggAndEvolveFeatures) return null;
-        const chosenImage = evolveImages[Math.floor(Math.random() * evolveImages.length)] || 'Images/Red%20evolve.png';
-        const lowered = chosenImage.toLowerCase();
         const evolvedSet = {
-          normal: chosenImage,
-          angry: chosenImage,
-          sad: chosenImage,
-          tired: chosenImage,
-          sleep: chosenImage,
-          eating: chosenImage,
-          drinking: chosenImage,
-          playing: chosenImage,
-          art: chosenImage,
-          reading: chosenImage,
-          pc: chosenImage,
-          celebration: chosenImage
+          normal: newZenzyImage,
+          angry: newZenzyImage,
+          sad: newZenzyImage,
+          tired: newZenzyImage,
+          sleep: newZenzyImage,
+          eating: newZenzyImage,
+          drinking: newZenzyImage,
+          playing: newZenzyImage,
+          art: newZenzyImage,
+          reading: newZenzyImage,
+          pc: newZenzyImage,
+          celebration: newZenzyImage
         };
-
-        if (lowered.indexOf('red%20evolve.png') !== -1) {
-          evolvedSet.angry = 'Images/Red%20evolve%20zenzy/Red%20evolve%20angry.png';
-          evolvedSet.sad = 'Images/Red%20evolve%20zenzy/Red%20evolve%20sad.png';
-          evolvedSet.tired = 'Images/Red%20evolve%20zenzy/Red%20evolve%20tired.png';
-          evolvedSet.sleep = 'Images/Red%20evolve%20zenzy/Red%20evolve%20tired.png';
-          evolvedSet.eating = 'Images/Red%20evolve%20zenzy/Red%20evolve%20eat.png';
-          evolvedSet.drinking = 'Images/Red%20evolve%20zenzy/red%20evolve%20drink.png';
-          evolvedSet.playing = 'Images/Red%20evolve%20zenzy/Red%20evolve%20play.png';
-        } else if (lowered.indexOf('raindbow%20evolve.png') !== -1) {
-          evolvedSet.playing = 'Images/Rainbow%20evolve%20zenzy/Raindow%20evolve%20zenzy%20playing.png';
-          evolvedSet.art = 'Images/Rainbow%20evolve%20zenzy/Rainbow%20evolve%20zenzy%20painting.png';
-        }
 
         return evolvedSet;
       }
@@ -10406,8 +10391,6 @@ document.addEventListener("DOMContentLoaded", function(){
       let mobileDragListenersBound = false;
       let activePointerDrag = null;
       const zenzyAppearanceStorageKey = 'zenzyAppearanceState';
-      const newZenzyImage = 'New%20zenzy.png';
-
       function getZenzyAppearance(){
         const defaults = { color: 'sky', hat: '', owned: [] };
         try {
@@ -11625,9 +11608,9 @@ document.addEventListener("DOMContentLoaded", function(){
       function applyZenzyEmotionLockState() {
         if (!zenzyAvatar) return;
         if (zenzyEmotionLockMode === 'celebration') {
-          zenzyAvatar.src = getZenzyEvolvedStateImage('celebration', 'Images/Zenzy%20baby/celabrating%20Zenzy.png');
+          zenzyAvatar.src = getZenzyEvolvedStateImage('celebration', 'New%20zenzy.png');
         } else {
-          zenzyAvatar.src = getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Normal%20Zenzy.png');
+          zenzyAvatar.src = getZenzyEvolvedStateImage('normal', 'New%20zenzy.png');
         }
         localStorage.setItem('zenzyMood', 'normal');
         localStorage.setItem('zenzyEmotionId', 'normal');
@@ -11901,7 +11884,7 @@ document.addEventListener("DOMContentLoaded", function(){
           updateHealthStat('emotional', 30); // Meditation helps regulation more
         }
         
-        zenzyAvatar.src = getZenzyEvolvedStateImage('sleep', getZenzyEvolvedStateImage('tired', 'Images/Zenzy%20baby/Tired%20zenzy.png'));
+        zenzyAvatar.src = getZenzyEvolvedStateImage('sleep', getZenzyEvolvedStateImage('tired', 'New%20zenzy.png'));
         if (zenzySpeech) {
           const messages = {
             music: 'The music is so relaxing... 🎵',
@@ -12185,7 +12168,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       function setAdoptedZenzyState() {
         if (zenzyAvatar) {
-          zenzyAvatar.src = getZenzyEvolvedStateImage('normal', 'Images/Zenzy%20baby/Normal%20Zenzy.png');
+          zenzyAvatar.src = getZenzyEvolvedStateImage('normal', 'New%20zenzy.png');
         }
         const hasZenzyName = !!(localStorage.getItem('zenzyName') || '').trim();
         if (zenzySpeech) {
@@ -12200,7 +12183,7 @@ document.addEventListener("DOMContentLoaded", function(){
       function setZenzyCelebrating() {
         localStorage.setItem('zenzyMood', 'normal');
         if (zenzyAvatar) {
-          zenzyAvatar.src = getZenzyEvolvedStateImage('celebration', 'Images/Zenzy%20baby/celabrating%20Zenzy.png');
+          zenzyAvatar.src = getZenzyEvolvedStateImage('celebration', 'New%20zenzy.png');
         }
         if (zenzySpeech) {
           zenzySpeech.textContent = 'Yay! Thank you for helping me!';
@@ -12643,7 +12626,7 @@ document.addEventListener("DOMContentLoaded", function(){
         sleepZenzyBtn.onclick = function(e) {
           e.stopPropagation();
           if (spendCoins(50)) {
-            setCareModalZenzyImage(sleepZenzyModalImage, getZenzyEvolvedStateImage('sleep', getZenzyEvolvedStateImage('tired', 'Images/Zenzy%20baby/Tired%20zenzy.png')), 'Zenzy getting sleepy');
+            setCareModalZenzyImage(sleepZenzyModalImage, getZenzyEvolvedStateImage('sleep', getZenzyEvolvedStateImage('tired', 'New%20zenzy.png')), 'Zenzy getting sleepy');
             showModal(zenzySleepModal);
           } else {
             showInsufficientZpModal();
@@ -13241,13 +13224,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
             setTimeout(function() {
               if (zenzyHatchingImageModal) {
-                zenzyHatchingImageModal.src = 'Images/Zenzy%20baby/Hatching%20Zenzy.png';
+                zenzyHatchingImageModal.src = 'New%20zenzy.png';
               }
             }, 1800);
 
             setTimeout(function() {
               if (zenzyHatchingImageModal) {
-                zenzyHatchingImageModal.src = 'Images/Zenzy%20baby/Normal%20Zenzy.png';
+                zenzyHatchingImageModal.src = 'New%20zenzy.png';
               }
             }, 2800);
 
