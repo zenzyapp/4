@@ -7775,6 +7775,143 @@ document.addEventListener("DOMContentLoaded", function(){
         thought: {quiz:['Count how many words it has','Tell everyone you know exactly what they think','Decide you can never learn anything','Yes, every thought is a prediction','Insist that no one can help'], practice:['Ignore every kind thing anyone has said','Decide preparation can never help','Assume they are secretly angry','Tell yourself you must never have a thought']}
       };
 
+      const sensoryFollowups = [
+        {
+          quiz: null,
+          reflection: [
+            'Have you ever felt overwhelmed in a busy place? If not, imagine a busy place that might feel overwhelming.',
+            'What did you do, or what could you do there?',
+            'What else could you try, or who could help?'
+          ]
+        },
+        {
+          quiz: [
+            ['The school bell sounds too loud. What might help?', 'Ask about ear defenders or a quieter place', 'Stand closer to the bell', 'Pretend the sound cannot bother anyone'],
+            ['A strong smell at lunch bothers you. What could you do?', 'Tell an adult and ask to move if possible', 'Stay silent even if you need help', 'Tell others they must like the smell'],
+            ['The classroom light feels too bright. What might help?', 'Ask to sit away from the glare', 'Look directly at the light', 'Tell yourself everyone sees light the same way'],
+            ['A friend enjoys a noisy game that you do not. What is true?', 'Different people can enjoy different sensations', 'Everyone must enjoy the same noise', 'Your friend must dislike the game too'],
+            ['You feel restless while doing homework. What might help?', 'Ask for a safe movement break', 'Keep working until you feel worse', 'Run somewhere unsafe']
+          ],
+          reflection: [
+            'Are there parts of your day that feel overwhelming to your senses? If not, imagine a time that might be tricky.',
+            'What do you do, or what could you do, at that time?',
+            'Could you try anything different or ask someone for support?'
+          ]
+        },
+        {
+          quiz: [
+            ['A quiet song helps you feel calm. What could you do?', 'Listen to it when it is safe and suitable', 'Assume everyone must like the song', 'Turn it up until it hurts'],
+            ['You enjoy drawing with soft pencils. What could you try?', 'Choose them for a drawing activity if available', 'Force a friend to use them', 'Use something uncomfortable instead'],
+            ['Your friend enjoys a texture you dislike. What can you remember?', 'People can like different textures', 'Everyone must like the same texture', 'Your friend is pretending'],
+            ['A familiar smell feels comforting. What is a good choice?', 'Enjoy it if it is safe and others are comfortable too', 'Bring a strong smell near someone who dislikes it', 'Assume every smell is safe to touch or taste'],
+            ['You enjoy moving when you have been sitting. What could you try?', 'Take a safe stretch or walk with permission', 'Push past people to move', 'Keep moving even if you feel dizzy']
+          ],
+          reflection: [
+            'What sight, sound, texture or movement do you enjoy? If you are unsure, imagine one you might like.',
+            'When do you use it, or when could you try it?',
+            'How could you use it safely when you need comfort or a break?'
+          ]
+        },
+        {
+          quiz: [
+            ['A jumper feels itchy. What could you do?', 'Ask to change it or wear a comfortable layer', 'Wear it even if it hurts', 'Tell everyone they must find it itchy'],
+            ['The smell of a cleaning product is too strong. What could help?', 'Move away and tell an adult', 'Move closer to the smell', 'Open or use the product yourself'],
+            ['A food texture feels uncomfortable. What could you do?', 'Tell a trusted adult and discuss another option', 'Force someone else to eat it', 'Hide your discomfort when you need help'],
+            ['A busy pattern makes your eyes feel tired. What might help?', 'Look away or move to a less busy spot', 'Stare at it for longer', 'Tell yourself that everyone sees it the same way'],
+            ['Someone dislikes a sound that you enjoy. What could you do?', 'Respect their feelings and find a solution together', 'Make the sound louder on purpose', 'Tell them they are wrong to feel uncomfortable']
+          ],
+          reflection: [
+            'Is there a sound, smell, texture or other sensation you dislike? If not, imagine one that might bother someone.',
+            'What do you do, or what could someone do, when it happens?',
+            'What different adjustment or support might make it more comfortable?'
+          ]
+        },
+        {
+          quiz: [
+            ['Your shoulders feel tight in a noisy room. What could you do?', 'Notice the clue and ask for a quieter break', 'Ignore the feeling until it gets worse', 'Decide that body clues never matter'],
+            ['You feel fidgety after sitting for a long time. What might help?', 'Ask for a safe stretch or movement break', 'Push someone to make space', 'Keep still even if you need support'],
+            ['You feel tired and find it hard to focus. What could you try?', 'Tell a trusted adult and discuss a short break', 'Assume you must never ask for help', 'Keep going without noticing how you feel'],
+            ['A friend notices different body clues from yours. What is true?', 'People may notice their needs in different ways', 'Everyone must feel exactly the same', 'Only your clues are real'],
+            ['Your usual calming tool is not helping today. What could you do?', 'Try another safe option or ask for help', 'Use it until it hurts', 'Decide nothing can ever help']
+          ],
+          reflection: [
+            'What clues might your body give you when your senses feel too busy? If you are unsure, imagine a clue.',
+            'What have you done, or what could you do, when you notice that clue?',
+            'What else could you try to help your body feel more comfortable?'
+          ]
+        },
+        {
+          quiz: [
+            ['Getting ready in the morning feels rushed and noisy. What might help?', 'Ask for a quieter routine or some extra time', 'Add more noise to the room', 'Keep your worries secret when you need help'],
+            ['The lunch hall feels crowded. What could you ask?', 'Could I sit somewhere quieter if possible?', 'Can everyone stop eating forever?', 'Should I ignore how I feel?'],
+            ['Changing activities feels overwhelming. What might help?', 'Ask for a warning before the change', 'Wait without knowing what is happening', 'Blame a classmate for the change'],
+            ['A friend finds a different time of day tricky. What is true?', 'Different routines can affect people differently', 'Everyone must find the same time difficult', 'Their experience must be made up'],
+            ['The journey home feels too noisy. What could you try?', 'Ask an adult about a quieter option or ear defenders', 'Make more noise to cover it up', 'Ignore discomfort even when help is available']
+          ],
+          reflection: [
+            'Which part of your routine feels busiest for your senses? If none does, imagine a busy time of day.',
+            'What do you do, or what could you do, to get through that time?',
+            'What could you change or plan ahead for next time?'
+          ]
+        },
+        {
+          quiz: [
+            ['You want to notice where your body is while sitting. What could help?', 'Place your feet on the floor and notice their position', 'Push the chair into someone else', 'Ignore any discomfort'],
+            ['Carrying a few books feels helpful. What is a safe choice?', 'Ask an adult which books are okay to carry', 'Carry the heaviest stack you can find', 'Keep carrying them if they hurt'],
+            ['You would like to push against a wall for a break. What could you do?', 'Ask for a safe space and push gently', 'Push another person instead', 'Push until your arms hurt'],
+            ['Your friend does not enjoy squeezing a stress ball. What is true?', 'Different activities suit different people', 'Everyone must enjoy squeezing things', 'Your friend has to keep squeezing it'],
+            ['A body-position activity feels uncomfortable. What should you do?', 'Stop and tell a trusted adult', 'Keep going until it hurts more', 'Tell someone else to do it for you']
+          ],
+          reflection: [
+            'Have you noticed a time when sitting still or knowing where your body is felt tricky? If not, imagine one.',
+            'What did you do, or what might help in that situation?',
+            'What safe body-position activity or support could you try differently?'
+          ]
+        },
+        {
+          quiz: [
+            ['You have been sitting for a long time and want to move. What could help?', 'Ask for a safe walking or stretching break', 'Run through a crowded room', 'Ignore your need for a break'],
+            ['You feel dizzy while spinning. What should you do?', 'Stop and tell a trusted adult', 'Spin faster', 'Keep spinning until you fall'],
+            ['Balancing on one foot is difficult. What is a safe option?', 'Practise near a stable support with an adult if needed', 'Practise at the edge of a high place', 'Push a friend while they balance'],
+            ['A friend enjoys rocking gently but you do not. What is true?', 'People can prefer different kinds of movement', 'Everyone must enjoy rocking', 'Your friend is wrong about their preference'],
+            ['A movement break is over and you need to return to a task. What could help?', 'Pause and check how your body feels', 'Keep moving even if it feels unsafe', 'Rush into others without looking']
+          ],
+          reflection: [
+            'When has moving, balancing or sitting still felt tricky for you? If you cannot think of a time, imagine one.',
+            'What did you do, or what could you do, to feel steadier or more comfortable?',
+            'What different safe movement or break could you try?'
+          ]
+        },
+        {
+          quiz: [
+            ['Noise makes it hard to concentrate. Which tool might help?', 'Ear defenders or a quieter space', 'A louder speaker', 'A flashing light'],
+            ['A fidget helps you focus. How could you use it?', 'Use it safely without disturbing others', 'Throw it across the room', 'Force someone else to use it'],
+            ['The light feels too bright outdoors. What could you try?', 'A hat or sunglasses if suitable', 'Look straight at the sun', 'Ask everyone to close their eyes'],
+            ['A tool that helps your friend does not help you. What is true?', 'Different tools work for different people', 'You must use exactly the same tool', 'No other tool can help anyone'],
+            ['You are unsure which tool to try. What could you do?', 'Ask a trusted adult to help you choose', 'Use an unfamiliar item in an unsafe way', 'Decide you are not allowed support']
+          ],
+          reflection: [
+            'What sensory tool or break has helped you, or might help you, feel more comfortable?',
+            'When have you used it, or when could you use it?',
+            'What other tool could you try if the first one does not help?'
+          ]
+        },
+        {
+          quiz: [
+            ['You notice a place is becoming too noisy. What could be in your plan?', 'Ask for a quieter space or ear defenders', 'Wait until the noise hurts', 'Make the place louder'],
+            ['You are feeling sleepy and need to focus. What could you try?', 'Ask about a safe stretch or movement break', 'Move in an unsafe place', 'Assume you can never feel alert'],
+            ['Your plan is not helping in a new situation. What could you do?', 'Tell a trusted adult and try another safe idea', 'Keep using it even if it hurts', 'Decide you can never change your plan'],
+            ['A friend has a different sensory plan. What can you remember?', 'Plans can be different because people have different needs', 'Everyone needs exactly the same plan', 'Only one person is allowed a plan'],
+            ['You need help using your plan at school. What could you say?', 'Can we talk about what might help me?', 'Keep your needs secret even when you want help', 'Tell the adult to guess what you need']
+          ],
+          reflection: [
+            'Imagine a situation where your senses might feel too busy or not alert enough. What is happening?',
+            'What could you do first to help yourself feel more comfortable?',
+            'If that did not help, what else could you try or who could you ask?'
+          ]
+        }
+      ];
+
       const communicationFollowups = [
         {
           scenario: 'Sarah is upset because her friend has been ignoring her. What could Sarah say to communicate her feelings?',
@@ -8228,7 +8365,10 @@ document.addEventListener("DOMContentLoaded", function(){
         const next = document.getElementById('circleFollowupNext');
         const communication = activeQuestActivity.questId === 'communication'
           ? communicationFollowups[activeQuestActivity.index] : null;
-        const questions = communication && communication.quiz ? communication.quiz : theme.quiz;
+        const sensory = activeQuestActivity.questId === 'sensory'
+          ? sensoryFollowups[activeQuestActivity.index] : null;
+        const segmentQuiz = communication && communication.quiz || sensory && sensory.quiz;
+        const questions = segmentQuiz || theme.quiz;
         next.disabled = false;
         feedback.textContent = '';
         choices.innerHTML = '';
@@ -8236,7 +8376,7 @@ document.addEventListener("DOMContentLoaded", function(){
           prompt.textContent = 'Choose an answer for each question.';
           label.style.display = 'none';
           answer.style.display = 'none';
-          const thirdAnswers = (communication && communication.quiz) || activeQuestActivity.questId === 'conflict'
+          const thirdAnswers = segmentQuiz || activeQuestActivity.questId === 'conflict'
             ? questions.map(function(question){ return question[3]; })
             : circleThirdAnswers[activeQuestActivity.questId].quiz;
           renderCircleQuestions(choices, questions, function(){ feedback.textContent = ''; }, thirdAnswers);
@@ -8249,6 +8389,17 @@ document.addEventListener("DOMContentLoaded", function(){
             const card = document.createElement('div');
             card.className = 'circle-quiz-question';
             addSpecialMissionTextField(card, text, 'communicationStatement-' + index, feedback);
+            choices.appendChild(card);
+          });
+          next.textContent = 'Finish';
+        } else if(sensory){
+          prompt.textContent = 'Think about your senses. You can describe your own experience or imagine a situation.';
+          label.style.display = 'none';
+          answer.style.display = 'none';
+          sensory.reflection.forEach(function(text, index){
+            const card = document.createElement('div');
+            card.className = 'circle-quiz-question';
+            addSpecialMissionTextField(card, text, 'sensoryReflection-' + index, feedback);
             choices.appendChild(card);
           });
           next.textContent = 'Finish';
@@ -8278,6 +8429,11 @@ document.addEventListener("DOMContentLoaded", function(){
           if(communication){
             if(Array.from(choices.querySelectorAll('textarea')).some(function(input){ return !input.value.trim(); })){
               feedback.textContent = 'Complete all three parts of the sentence before finishing.';
+              return;
+            }
+          } else if(sensory){
+            if(Array.from(choices.querySelectorAll('textarea')).some(function(input){ return !input.value.trim(); })){
+              feedback.textContent = 'Write an idea for each question before finishing.';
               return;
             }
           } else if(!answer.value.trim()){ feedback.textContent = 'Write an idea before finishing.'; return; }
@@ -13760,8 +13916,8 @@ document.addEventListener("DOMContentLoaded", function(){
             if(state.quest.questId === 'friendship' && friendshipPerspectiveActivities[state.quest.index]) showFriendshipPerspectiveActivity(state.quest.step);
             else if(specialMissionActivities[state.quest.questId] && specialMissionActivities[state.quest.questId][state.quest.index]) showSpecialMissionActivity(state.quest.step);
             else if(circleFollowupThemes[state.quest.questId]){
-              if(state.quest.questId === 'communication'){
-                circleFollowupTopic = circleSegmentTitles.communication[state.quest.index];
+              if(state.quest.questId === 'communication' || state.quest.questId === 'sensory'){
+                circleFollowupTopic = circleSegmentTitles[state.quest.questId][state.quest.index];
                 circleFollowupComplete = function(){ showScreen(missionsScreen); };
               }
               showCircleFollowup(state.quest.step);
