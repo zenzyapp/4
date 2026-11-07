@@ -1415,7 +1415,7 @@ textarea{ min-height:140px; resize:vertical; }
   border:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
-  background:transparent url("Images/Other%20image/Speech%20bubble%20left.png") center / 100% 100% no-repeat !important;
+  background:transparent url("Other%20image/Speech%20bubble%20left.png") center / 100% 100% no-repeat !important;
 }
 .screen .detective-intro-bubble::before,
 .screen .detective-intro-bubble::after,

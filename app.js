@@ -2268,7 +2268,7 @@ document.addEventListener("DOMContentLoaded", function(){
         puzzleContainer.innerHTML = `
           <h2 style="color:#1fa7a7; margin-top:0;">🌀 Maze</h2>
           <div class="maze-scene">
-            <div class="maze-sidekick"><img src="Images/New%20zenzy.png" alt="Zenzy looking for food" /><span>Help Zenzy!</span></div>
+            <div class="maze-sidekick"><img src="New%20zenzy.png" alt="Zenzy looking for food" /><span>Help Zenzy!</span></div>
             <div class="maze-wrap">
               <canvas id="mazeCanvas" class="maze-canvas" width="${canvasWidth}" height="${canvasHeight}"></canvas>
               <canvas id="mazeDrawCanvas" class="maze-draw-canvas" width="${canvasWidth}" height="${canvasHeight}"></canvas>
@@ -10406,7 +10406,7 @@ document.addEventListener("DOMContentLoaded", function(){
       let mobileDragListenersBound = false;
       let activePointerDrag = null;
       const zenzyAppearanceStorageKey = 'zenzyAppearanceState';
-      const newZenzyImage = 'Images/New%20zenzy.png';
+      const newZenzyImage = 'New%20zenzy.png';
 
       function getZenzyAppearance(){
         const defaults = { color: 'sky', hat: '', owned: [] };
