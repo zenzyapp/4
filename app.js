@@ -8262,7 +8262,7 @@ document.addEventListener("DOMContentLoaded", function(){
             ], index);
           } else if(index === 2){
             showSocialActivity('👋 S3 Greeting Somebody', 'When greeting somebody, which behaviors are expected?', [
-              '😊 Smile and say hi:expected, 🙈 Ignore them:unexpected, 👋 Wave hello:expected, ↩️ Turn away:unexpected, 👀 Make eye contact:expected, 📱 Look at phone:unexpected',
+              '😊 Smile and say hi:expected, 🙈 Ignore them:unexpected, 👋 Wave hello:expected, ↩️ Turn away:unexpected, 👀 Look at them:expected, 📱 Look at phone:unexpected',
               '🗣️ Use kind words:expected, 😠 Use mean words:unexpected, 🤝 Say nice to meet you:expected, 🙄 Roll your eyes:unexpected, 🙂 Friendly tone:expected, 🚶 Walk off mid-greeting:unexpected',
               '👂 Listen to response:expected, 📣 Shout in face:unexpected, 🧍 Give personal space:expected, 🫸 Push past:unexpected, 👋 Short polite goodbye:expected, 🧊 Cold silence:unexpected'
             ], index);
