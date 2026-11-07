@@ -7289,7 +7289,13 @@ document.addEventListener("DOMContentLoaded", function(){
           card.appendChild(options);
           communicationOptions.appendChild(card);
         });
-        completeBtn.onclick = function(){ showCommunicationResults(answers); };
+        completeBtn.onclick = function(){
+          if(activeQuestActivity && activeQuestActivity.index === 0){
+            showCommunicationResults(answers);
+          } else {
+            finishCircleQuestActivity(function(){ showScreen(missionsScreen); });
+          }
+        };
         showScreen(communicationActivityScreen);
       }
 
@@ -7769,6 +7775,103 @@ document.addEventListener("DOMContentLoaded", function(){
         thought: {quiz:['Count how many words it has','Tell everyone you know exactly what they think','Decide you can never learn anything','Yes, every thought is a prediction','Insist that no one can help'], practice:['Ignore every kind thing anyone has said','Decide preparation can never help','Assume they are secretly angry','Tell yourself you must never have a thought']}
       };
 
+      const communicationFollowups = [
+        {
+          scenario: 'Sarah is upset because her friend has been ignoring her. What could Sarah say to communicate her feelings?',
+          quiz: null
+        },
+        {
+          scenario: 'Amir has an idea for a group project, but the others have already started without asking him. What could Amir say?',
+          quiz: [
+            ['You have an idea for a group game. What could you say?', 'I have an idea. Could I share it?', 'Nobody else gets to choose', 'Keep the idea secret and blame the group'],
+            ['A friend does not understand your idea. What could help?', 'Explain it another way and ask what they think', 'Tell them they are silly', 'Stop speaking and expect them to guess'],
+            ['What might happen if everyone speaks at once?', 'People may miss each other’s ideas', 'Everyone will hear every idea clearly', 'The group will not need to listen'],
+            ['A classmate suggests a different plan. What can you do?', 'Listen and look for a way to include both ideas', 'Say their idea is always wrong', 'Refuse to let them speak'],
+            ['You are unsure about a group instruction. What should you do?', 'Ask the group to explain it', 'Pretend you understand and guess', 'Tell the group to stop working']
+          ]
+        },
+        {
+          scenario: 'Ella feels frustrated because her brother keeps interrupting while she explains a game. What could Ella say?',
+          quiz: [
+            ['A friend is telling you about their day. What shows you are listening?', 'Give them time to finish and pay attention', 'Change the subject immediately', 'Talk over them'],
+            ['You are not sure what your friend meant. What could you ask?', 'Do you mean that you want a turn later?', 'Why are you always wrong?', 'Nothing; decide what they meant for them'],
+            ['What might happen if you interrupt instructions?', 'You might miss an important step', 'You will automatically understand more', 'Nobody else will need to speak'],
+            ['Your friend says they need a break. What could you do?', 'Listen and give them the space they asked for', 'Follow them and demand an answer', 'Tell others their feelings do not matter'],
+            ['Your friend is quiet while you are talking. What is a kind way to check in?', 'Ask if they would like to share anything', 'Assume you know what they think', 'Tell them they must agree']
+          ]
+        },
+        {
+          scenario: 'Maya feels hurt when her classmate makes jokes about her drawing. What could Maya say?',
+          quiz: [
+            ['You dislike a classmate’s suggestion. What could you say?', 'I have a different idea. Can I share it?', 'Your idea is stupid', 'Laugh and tell everyone not to listen'],
+            ['A friend makes a mistake while speaking. What helps?', 'Give them time and respond kindly', 'Copy their mistake to embarrass them', 'Tell them never to speak again'],
+            ['What could happen when someone uses unkind words?', 'The other person might feel hurt or stop sharing', 'Everyone will always feel happy', 'The words cannot affect anyone'],
+            ['You need someone to lower their voice. What could you say?', 'Could you please speak a little more quietly?', 'Shout louder than them', 'Insult them without explaining'],
+            ['Your words upset someone by accident. What could you do?', 'Apologise and listen to how they feel', 'Say their feelings are wrong', 'Pretend you did not hear them']
+          ]
+        },
+        {
+          scenario: 'Leo feels disappointed because his friend changed their plans without telling him. What could Leo say?',
+          quiz: [
+            ['Your friend chose a game you do not enjoy. What could you say?', 'Could we find a game we both like?', 'You must play only my game', 'Say nothing and break the game'],
+            ['A friend looks upset after a joke. What could you do?', 'Ask how they feel and listen', 'Tell them they cannot be upset', 'Make the same joke again'],
+            ['Your friend says “later” but does not say when. What could happen?', 'You might expect different times and feel confused', 'You both must mean the same time', 'There is no need to check'],
+            ['You cannot play with a friend today. What could you tell them?', 'I cannot play today, but we can plan another time', 'Ignore their question', 'Tell them nobody likes their games'],
+            ['You think your friend is angry but are not sure. What could help?', 'Ask them gently instead of guessing', 'Tell everyone they are angry', 'Stop being their friend without asking']
+          ]
+        },
+        {
+          scenario: 'Aisha feels left out because her group keeps choosing a game she cannot join. What could Aisha say?',
+          quiz: [
+            ['A new child is standing near your game. What could you say?', 'Would you like to join us?', 'You are not allowed to speak', 'Ignore them on purpose'],
+            ['Someone needs more time to answer. What could you do?', 'Wait and let them respond in their own time', 'Finish every sentence for them', 'Move on without giving them a chance'],
+            ['What might happen if a group makes a plan without explaining it?', 'Someone may feel confused or left out', 'Everyone will automatically know the plan', 'No one will need to ask questions'],
+            ['A friend communicates using gestures. What could help?', 'Pay attention and ask if you are unsure', 'Ignore them because they are not speaking', 'Laugh at their gestures'],
+            ['Two people want to contribute to the same task. What could you suggest?', 'Ask each person for an idea and share the turns', 'Let only the loudest person speak', 'Decide without listening to either person']
+          ]
+        },
+        {
+          scenario: 'Ben accidentally breaks his friend’s pencil and feels worried about telling her. What could Ben say?',
+          quiz: [
+            ['You accidentally spill water on a friend’s work. What could you do?', 'Tell them honestly and offer to help', 'Hide the paper and blame someone else', 'Say nothing and walk away'],
+            ['You promised to bring a game but forgot. What could you say?', 'I forgot it, and I am sorry. Can we choose another game?', 'Pretend your friend never asked', 'Blame your friend for reminding you'],
+            ['What might happen if you tell a friend the wrong meeting place?', 'You might miss each other', 'You will definitely meet sooner', 'The place never matters'],
+            ['You are not ready to answer a personal question. What could you say?', 'I do not want to talk about that right now', 'Make up a story about someone else', 'Insult the person who asked'],
+            ['A friend trusts you with a worry about someone being unsafe. What could you do?', 'Help them tell a trusted adult', 'Promise to keep everyone unsafe', 'Tell the whole class for fun']
+          ]
+        },
+        {
+          scenario: 'Noah feels worried because his friend seems sad and has not replied to his message. What could Noah say when he sees them?',
+          quiz: [
+            ['Your friend looks upset. What could you ask?', 'Would you like to talk or have some space?', 'Why are you ruining my day?', 'Tell them how they must feel'],
+            ['A friend shares a worry with you. What helps?', 'Listen and ask what support they would like', 'Laugh and change the subject', 'Tell everyone their private worry'],
+            ['What might happen if you assume you know why someone is quiet?', 'You might misunderstand how they feel', 'Your guess will always be correct', 'They will never need a chance to explain'],
+            ['A friend says they are not ready to talk. What can you do?', 'Respect that and let them know you are there', 'Demand that they tell you immediately', 'Make up an explanation for them'],
+            ['A friend asks for help with a difficult problem. What could you suggest?', 'Talk together to a trusted adult', 'Keep them away from anyone who could help', 'Tell them their problem does not matter']
+          ]
+        },
+        {
+          scenario: 'Priya feels overwhelmed because her group has given her too many jobs. What could Priya say?',
+          quiz: [
+            ['Your group is dividing a project. What could you ask?', 'Can we agree who will do each part?', 'Can I decide everyone’s jobs without asking?', 'Why should anyone explain the plan?'],
+            ['You have finished your part of a task. What could you tell your group?', 'I have finished. Does anyone need help?', 'I will hide the finished work', 'I will say nothing and leave the group guessing'],
+            ['What might happen if nobody agrees on who is bringing supplies?', 'The group might forget something it needs', 'Every supply will appear by itself', 'Everyone will always bring the right thing'],
+            ['A teammate has a different idea. What could you do?', 'Listen and discuss which parts might work', 'Tell them their ideas never matter', 'Refuse to let them explain'],
+            ['The instructions for a task seem confusing. What could your group do?', 'Ask a teacher to clarify them together', 'Guess separately without telling anyone', 'Blame a teammate for asking']
+          ]
+        },
+        {
+          scenario: 'Charlie feels upset because a friend borrowed a favourite book without asking. What could Charlie say?',
+          quiz: [
+            ['A friend borrows your book without asking. What could you say?', 'Please ask me before borrowing my things', 'Take all their things without asking', 'Call them names in front of everyone'],
+            ['You want to check that someone understood your message. What could you do?', 'Ask them what they understood and clarify if needed', 'Assume they understood every word', 'Tell them they are bad at listening'],
+            ['What might happen if a message sounds unkind when you did not mean it?', 'The other person might feel hurt or confused', 'Everyone will always know your intention', 'Words and tone never affect feelings'],
+            ['You are feeling angry before a conversation. What could help?', 'Pause and take a breath before speaking', 'Shout before the other person can respond', 'Make threats to get your way'],
+            ['A conversation has gone wrong. What could you say?', 'I think we misunderstood each other. Can we try again?', 'I will never listen to you again', 'Everything is your fault and I will not explain']
+          ]
+        }
+      ];
+
       function renderCircleQuestions(container, questions, onChange, thirdAnswers){
         const start = Math.floor(Math.random() * 3);
         questions.forEach(function(item, index){
@@ -8123,6 +8226,9 @@ document.addEventListener("DOMContentLoaded", function(){
         const answer = document.getElementById('circleFollowupAnswer');
         const feedback = document.getElementById('circleFollowupFeedback');
         const next = document.getElementById('circleFollowupNext');
+        const communication = activeQuestActivity.questId === 'communication'
+          ? communicationFollowups[activeQuestActivity.index] : null;
+        const questions = communication && communication.quiz ? communication.quiz : theme.quiz;
         next.disabled = false;
         feedback.textContent = '';
         choices.innerHTML = '';
@@ -8130,11 +8236,22 @@ document.addEventListener("DOMContentLoaded", function(){
           prompt.textContent = 'Choose an answer for each question.';
           label.style.display = 'none';
           answer.style.display = 'none';
-          const thirdAnswers = activeQuestActivity.questId === 'conflict'
-            ? theme.quiz.map(function(question){ return question[3]; })
+          const thirdAnswers = (communication && communication.quiz) || activeQuestActivity.questId === 'conflict'
+            ? questions.map(function(question){ return question[3]; })
             : circleThirdAnswers[activeQuestActivity.questId].quiz;
-          renderCircleQuestions(choices, theme.quiz, function(){ feedback.textContent = ''; }, thirdAnswers);
+          renderCircleQuestions(choices, questions, function(){ feedback.textContent = ''; }, thirdAnswers);
           next.textContent = 'Continue';
+        } else if(communication){
+          prompt.textContent = communication.scenario;
+          label.style.display = 'none';
+          answer.style.display = 'none';
+          ['I feel...', 'because...', 'I would like...'].forEach(function(text, index){
+            const card = document.createElement('div');
+            card.className = 'circle-quiz-question';
+            addSpecialMissionTextField(card, text, 'communicationStatement-' + index, feedback);
+            choices.appendChild(card);
+          });
+          next.textContent = 'Finish';
         } else {
           prompt.textContent = 'Think about what you have learned.';
           label.textContent = theme.reflect;
@@ -8146,7 +8263,7 @@ document.addEventListener("DOMContentLoaded", function(){
         next.onclick = function(){
           if(step === 2){
             const selected = choices.querySelectorAll('button[aria-pressed="true"]');
-            if(selected.length !== theme.quiz.length){ feedback.textContent = 'Choose an answer for every question to continue.'; return; }
+            if(selected.length !== questions.length){ feedback.textContent = 'Choose an answer for every question to continue.'; return; }
             if(Array.from(selected).some(function(button){ return button.dataset.helpful !== 'true'; })){
               feedback.textContent = 'Have another think about the highlighted questions and try again.';
               choices.querySelectorAll('.circle-quiz-question').forEach(function(card){
@@ -8158,7 +8275,12 @@ document.addEventListener("DOMContentLoaded", function(){
             showCircleFollowup(3);
             return;
           }
-          if(!answer.value.trim()){ feedback.textContent = 'Write an idea before finishing.'; return; }
+          if(communication){
+            if(Array.from(choices.querySelectorAll('textarea')).some(function(input){ return !input.value.trim(); })){
+              feedback.textContent = 'Complete all three parts of the sentence before finishing.';
+              return;
+            }
+          } else if(!answer.value.trim()){ feedback.textContent = 'Write an idea before finishing.'; return; }
           next.disabled = true;
           const onComplete = circleFollowupComplete;
           circleFollowupComplete = null;
@@ -13637,7 +13759,13 @@ document.addEventListener("DOMContentLoaded", function(){
           if(state.screen === 'circleFollowupScreen' && state.quest.step > 1){
             if(state.quest.questId === 'friendship' && friendshipPerspectiveActivities[state.quest.index]) showFriendshipPerspectiveActivity(state.quest.step);
             else if(specialMissionActivities[state.quest.questId] && specialMissionActivities[state.quest.questId][state.quest.index]) showSpecialMissionActivity(state.quest.step);
-            else if(circleFollowupThemes[state.quest.questId]) showCircleFollowup(state.quest.step);
+            else if(circleFollowupThemes[state.quest.questId]){
+              if(state.quest.questId === 'communication'){
+                circleFollowupTopic = circleSegmentTitles.communication[state.quest.index];
+                circleFollowupComplete = function(){ showScreen(missionsScreen); };
+              }
+              showCircleFollowup(state.quest.step);
+            }
           }
         } else {
           showScreen(target);
